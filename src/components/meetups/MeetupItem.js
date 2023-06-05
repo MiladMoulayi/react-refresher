@@ -1,23 +1,25 @@
-import { useContext } from 'react';
-import FavoritesContext from '../../store/favorites-context';
-import Card from '../ui/Card';
-import classes from './MeetupItem.module.css';
+import { useContext } from 'react'
+import FavoritesContext from '../../store/favorites-context'
+import Card from '../ui/Card'
+import classes from './MeetupItem.module.css'
 
 function MeetupItem(props) {
-  const favoritesCtx = useContext(FavoritesContext);
+  const favoritesCtx = useContext(FavoritesContext)
 
-  const itemIsFavorite = favoritesCtx.itemIsFavorite(props.id);
+  const itemIsFavorite = favoritesCtx.itemIsFavorite(props.id)
 
   function toggleFavorite() {
     if (itemIsFavorite) {
-      favoritesCtx.removeFavorite(props.id);
+      favoritesCtx.removeFavorite(props.id)
     } else {
       favoritesCtx.addFavorite({
+        key: props.id,
         id: props.id,
+        image: props.image,
         title: props.title,
         description: props.description,
         address: props.address,
-      });
+      })
     }
   }
 
@@ -39,7 +41,7 @@ function MeetupItem(props) {
         </div>
       </li>
     </Card>
-  );
+  )
 }
 
-export default MeetupItem;
+export default MeetupItem
